@@ -58,13 +58,20 @@ export const MovieGrid = () => {
       <div className="movie-grid">
         {data.results.map((movie, index) => (
           <div className="movie-link" key={index}>
-            <Link to={`/${genre}/${movie.id}`}>
-              <Movie movie={movie} />
-            </Link>
+            {genre ? (
+              <Link to={`/${genre}/${movie.id}`}>
+                {" "}
+                <Movie movie={movie} />
+              </Link>
+            ) : (
+              <Link to={`/movies/${movie.id}`}>
+                {" "}
+                <Movie movie={movie} />
+              </Link>
+            )}
           </div>
         ))}
       </div>
     </div>
   );
 };
-
